@@ -431,26 +431,32 @@ function dropCard() {
 }
 
 // 과일 발동: 인접한 모든 숫자에 곱셈
-function applyFruitEffect(r, c, mergeSet) {
- const cell = board[r][c];
- if (!isFruit(cell)) return;
- const mult = cell.fruit.mult;
- const dirs = [[-1,0],[1,0],[0,-1],[0,1]];
- for (const [dr,dc] of dirs) {
-   const nr=r+dr, nc=c+dc;
-   if (nr<0||nr>=ROWS||nc<0||nc>=COLS) continue;
-   if (board[nr][nc].value > 0) {
-     const oldVal = board[nr][nc].value;
-     const newVal = oldVal * mult;
-     score += newVal - oldVal;
-     document.getElementById('score').textContent = score;
-     board[nr][nc] = { value: newVal };
-     mergeSet.add(`${nr}-${nc}`);
-     if (newVal >= 256) fireConfetti();
-   }
- }
- // 과일은 항상 사라짐 (상함 포함)
- board[r][c] = { value: 0 };
+function applyFruitEffect(r, c, effectSet) {
+  const cell = board[r][c];
+  if (!isFruit(cell)) return;
+  const mult = cell.fruit.mult;
+  const dirs = [[-1,0],[1,0],[0,-1],[0,1]];
+  for (const [dr,dc] of dirs) {
+    const nr=r+dr, nc=c+dc;
+    if (nr<0||nr>=ROWS||nc<0||nc>=COLS) continue;
+    if (board[nr][nc].value > 0) {
+      const oldVal = board[nr][nc].value;
+
+      // 이미 2048 이상이면 효과 없음
+      if (oldVal >= 2048) continue;
+
+      const newVal = Math.min(oldVal * mult, 2048); // 2048 초과 불가
+
+      // 실제로 변화가 없으면 스킵 (이미 2048인데 곱하면 2048로 클램프됨)
+      if (newVal === oldVal) continue;
+
+      score += newVal - oldVal;
+      document.getElementById('score').textContent = score;
+      board[nr][nc] = { value: newVal };
+      effectSet.add(`${nr}-${nc}`);
+      if (newVal >= 256) fireConfetti();
+    }
+  }
 }
 
 // 숫자가 놓였을 때 인접 대기 과일 발동
