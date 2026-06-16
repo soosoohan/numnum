@@ -18,8 +18,8 @@
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-<title>넘넘 4×6 | Soosooland</title>
-<meta name="description" content="NumNum 4×6 — Drop numbers and fruits, multiply and merge!">
+<title>넘넘 4×4 | Soosooland</title>
+<meta name="description" content="NumNum 4×4 — Drop numbers and fruits, multiply and merge!">
 <link rel="canonical" href="https://soosooland.com/numnum/numnum4-ko.html">
 <link rel="stylesheet" href="https://soosooland.com/css/protection.css">
 <script src="https://soosooland.com/js/protection.js"></script>
@@ -79,7 +79,7 @@
  #grid {
    display: grid;
    grid-template-columns: repeat(4, 72px);
-   grid-template-rows: repeat(6, 72px);
+   grid-template-rows: repeat(4, 72px);
    gap: 4px; background: #111; padding: 6px;
    border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.5);
  }
@@ -233,13 +233,13 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-const ROWS = 6, COLS = 4;
+const ROWS = 4, COLS = 4;
 const MODE = 'numnum4x4';
 const QUEUE_SIZE = 3;
 const CONSONANTS = 'BCDFGHJKLMNPQRSTVWXZ';
 const DIGITS = '23456789';
 
-const NUMBER_CARDS = [2, 4, 8];
+const NUMBER_CARDS = [2, 4];
 const FRUIT_CARDS = [
   { emoji: '🍎', mult: 2 },
   { emoji: '🍒', mult: 4 },
