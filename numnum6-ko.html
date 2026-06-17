@@ -302,7 +302,7 @@ function randomCard() {
  if (Math.random() < 0.05) {
    return { fruit: FRUIT_CARDS[Math.floor(Math.random() * FRUIT_CARDS.length)] };
  }
- const weights = [60, 40];
+ const weights = [25,40,25,10];
  let r = Math.random() * 100;
  for (let i = 0; i < NUMBER_CARDS.length; i++) {
    r -= weights[i];
