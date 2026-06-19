@@ -73,8 +73,13 @@
    background: #2a2a4a; color: #aaa; font-size: 1.2rem;
    cursor: pointer; transition: background 0.2s;
  }
- .col-btn.selected { background: #f0c040; color: #1a1a2e; font-weight: bold; }
- .col-btn:hover { background: #3a3a6a; }
+.col-btn.selected {
+    background: #d6a92f;
+    color: #1a1a2e;
+    transform: translateY(4px);
+    box-shadow: 0 4px 12px rgba(240,192,64,0.5);
+}
+.col-btn:hover:not(.selected) { background: #3a3a6a; color: #888; }
 
  #grid {
    display: grid;
