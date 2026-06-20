@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
 <script>
  if (window.top !== window.self) {
    window.top.location = "https://soosooland.com";
  }
- console.log("© 2025-2026 Soosooland by 한수수. All rights reserved.");
+ console.log("© 2025-2026 Soosooland by Han Soosoo. All rights reserved.");
  console.log("https://soosooland.com");
  console.log("NumNum | Born: 2026-06-13");
 </script>
@@ -18,9 +18,9 @@
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-<title>넘넘 5×5 | Soosooland</title>
+<title>Numnum 5×5 | Soosooland</title>
 <meta name="description" content="NumNum 5×5 — Drop numbers and fruits, multiply and merge!">
-<link rel="canonical" href="https://soosooland.com/numnum/numnum5-ko.html">
+<link rel="canonical" href="https://soosooland.com/numnum/numnum5-en.html">
 <link rel="alternate" hreflang="ko" href="https://soosooland.com/numnum/numnum5-ko.html">
 <link rel="alternate" hreflang="en" href="https://soosooland.com/numnum/numnum5-en.html">
 <link rel="stylesheet" href="https://soosooland.com/css/protection.css">
@@ -161,7 +161,7 @@
 
 <div id="start-screen">
  <button class="back-button" onclick="location.href='index.html'">←</button>
- <h1>넘넘</h1>
+ <h1>Numnum</h1>
  <div style="font-size:2rem;">5×5</div>
   <p class="subtitle">Drop fruits to multiply numbers - 2x, 4x, 8x!</p>
  <div class="fruit-guide">
@@ -177,9 +177,9 @@
 </div>
 
 <button class="back-button" onclick="location.href='index.html'">←</button>
-<h1>🍎 넘넘</h1>
+<h1>🍎 Numnum</h1>
 <div id="player-id"></div>
-<div id="score-area">점수: <span id="score">0</span></div>
+<div id="score-area">Score: <span id="score">0</span></div>
 
 <div id="fruit-legend">
  <div class="fruit-item"><div class="fruit-badge">🍎</div><span>×2</span></div>
@@ -189,7 +189,7 @@
 
 <div id="queue-area">
  <div class="queue-slot">
-   <div class="queue-label">다음 카드</div>
+   <div class="queue-label">Next Card</div>
    <div class="queue-card active" id="q0"></div>
  </div>
  <div class="queue-slot">
@@ -204,21 +204,21 @@
 
 <div id="col-buttons"></div>
 <div id="grid"></div>
-<button id="drop-btn">▼ 낙하</button>
-<div id="pc-hint">← → 줄을 선택 · Enter / Space 낙하</div>
-<button id="ranking-btn" style="margin-top:14px; padding:10px 28px; border-radius:10px; border:none; background:#2a2a4a; color:#f0c040; font-size:0.95rem; cursor:pointer;">🏆 순위 보기</button>
+<button id="drop-btn">▼ Drop</button>
+<div id="pc-hint">← → Select Column · Enter / Space Drop</div>
+<button id="ranking-btn" style="margin-top:14px; padding:10px 28px; border-radius:10px; border:none; background:#2a2a4a; color:#f0c040; font-size:0.95rem; cursor:pointer;">🏆 Leaderboard</button>
 
 <div id="ranking-area" style="display:none;">
- <h3>🏆 Top 10 · 넘넘 5×5</h3>
+ <h3>🏆 Top 10 · Numnum 5×5</h3>
  <div id="ranking-list"></div>
 </div>
 
 <div id="overlay">
- <h2>게임 끝</h2>
- <p>점수: <strong id="final-score"></strong></p>
+ <h2>Game over</h2>
+ <p>Score: <strong id="final-score"></strong></p>
  <div style="display:flex; gap:12px; flex-wrap:wrap; justify-content:center;">
-   <button id="save-score-btn" style="padding:12px 28px; border-radius:10px; border:none; background:#a8e063; color:#1a1a2e; font-size:1rem; font-weight:bold; cursor:pointer;">💾 점수 저장</button>
-   <button id="restart-btn">다시 하기</button>
+   <button id="save-score-btn" style="padding:12px 28px; border-radius:10px; border:none; background:#a8e063; color:#1a1a2e; font-size:1rem; font-weight:bold; cursor:pointer;">💾 Save Score</button>
+   <button id="restart-btn">Try again</button>
  </div>
 </div>
 
@@ -546,7 +546,7 @@ async function checkGameOver() {
  gameOver = true;
  document.getElementById('final-score').textContent = score.toLocaleString();
  document.getElementById('save-score-btn').disabled = false;
- document.getElementById('save-score-btn').textContent = '💾 점수 저장';
+ document.getElementById('save-score-btn').textContent = '💾 Save Score';
  document.getElementById('overlay').classList.add('show');
 }
 
@@ -612,22 +612,22 @@ document.getElementById('restart-btn').addEventListener('click', init);
 
 document.getElementById('save-score-btn').addEventListener('click', async function() {
  this.disabled = true;
- this.textContent = '저장 중...';
+ this.textContent = 'Loading...';
  const myRank = await saveAndShowRank();
- this.textContent = myRank ? `✅ 저장 완료 · 🏆 ${myRank}위` : '✅ 저장 완료';
+ this.textContent = myRank ? `✅ Saved · 🏆 Ranking ${myRank}` : '✅ Saved';
 });
 
 document.getElementById('ranking-btn').addEventListener('click', async function() {
  const area = document.getElementById('ranking-area');
  if (area.style.display === 'block') {
    area.style.display = 'none';
-   this.textContent = '🏆 순위 보기';
+   this.textContent = '🏆 Leaderboard';
    return;
  }
- this.textContent = '불러오는 중...';
+ this.textContent = 'Loading...';
  await loadRanking();
  area.style.display = 'block';
- this.textContent = '🏆 순위 닫기';
+ this.textContent = '🏆 Close Leaderboard';
 });
 </script>
 </body>
