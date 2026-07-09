@@ -306,8 +306,17 @@ function genId() {
  return c()+c()+d()+d()+c()+c();
 }
 
-let playerId = localStorage.getItem('numnum-id');
-if (!playerId) { playerId = genId(); localStorage.setItem('numnum-id', playerId); }
+function gpGetItem(key) {
+  if (window.GamePix && GamePix.localStorage) return GamePix.localStorage.getItem(key);
+  return localStorage.getItem(key);
+}
+function gpSetItem(key, value) {
+  if (window.GamePix && GamePix.localStorage) return GamePix.localStorage.setItem(key, value);
+  return localStorage.setItem(key, value);
+}
+
+let playerId = gpGetItem('numnum-id');
+if (!playerId) { playerId = genId(); gpSetItem('numnum-id', playerId); }
 document.getElementById('player-id').textContent = playerId;
 
 let board, queue, selectedCol, score, gameOver, isMobile;
