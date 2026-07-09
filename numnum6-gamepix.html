@@ -491,7 +491,10 @@ function applyFruitEffect(r, c, effectSet) {
       safeGamePix(() => GamePix.updateScore(score));   
       board[nr][nc] = { value: newVal };
       effectSet.add(`${nr}-${nc}`);
-      if (newVal >= 256) fireConfetti();
+     if (newVal >= 256) {
+  fireConfetti();
+  safeGamePix(() => GamePix.happyMoment());
+}
     }
   }
 }
