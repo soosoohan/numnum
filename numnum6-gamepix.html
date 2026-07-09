@@ -570,15 +570,31 @@ function compactDown(c) {
  for (let r=writeRow;r>=0;r--) board[r][c]={value:0};
 }
 
+ let adPending = false;
+
 async function checkGameOver() {
  for (let c = 0; c < COLS; c++) { if (isEmpty(board[0][c])) return; }
  gameOver = true;
  document.getElementById('final-score').textContent = score.toLocaleString();
  document.getElementById('save-score-btn').disabled = false;
  document.getElementById('save-score-btn').textContent = '💾 Save Score';
+ 
+ safeGamePix(() => { GamePix.sdk.gameplayStop(); GamePix.sdk.sendScore(score); });
+
+ // 인터스티셜 광고 시도
+ if (window.GamePix && GamePix.interstitialAd) {
+   adPending = true;
+   try {
+     const res = await GamePix.interstitialAd();
+     adPending = false;
+   } catch(e) {
+     adPending = false;
+   }
+ }
+
  document.getElementById('overlay').classList.add('show');
- safeGamePix(() => { GamePix.sdk.gameplayStop(); GamePix.sdk.sendScore(score); }); // ⚠️ 변경 6
 }
+
 
 async function saveAndShowRank() {
  try {
@@ -639,8 +655,8 @@ document.addEventListener('keydown', e => {
 
 document.getElementById('drop-btn').addEventListener('click', dropCard);
 
-// ⚠️ 변경 7: restart-btn 리스너에 gameplayStart() 추가
 document.getElementById('restart-btn').addEventListener('click', function() {
+ if (adPending) return;
  init();
  safeGamePix(() => GamePix.sdk.gameplayStart());
 });
