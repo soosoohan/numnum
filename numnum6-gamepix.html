@@ -320,10 +320,27 @@ document.getElementById('player-id').textContent = playerId;
 
 let board, queue, selectedCol, score, gameOver, isMobile;
 
-// ⚠️ 변경 4: safeGamePix 헬퍼
-function safeGamePix(fn) {
-  try { if (window.GamePix) fn(); } catch(e) {}
+function dbg(msg) {
+  const box = document.getElementById('debug-box');
+  if (box) box.innerHTML += msg + '<br>';
 }
+
+function safeGamePix(fn) {
+  try {
+    if (window.GamePix) {
+      dbg('GamePix 존재함');
+      fn();
+    } else {
+      dbg('GamePix 없음');
+    }
+  } catch(e) {
+    dbg('에러: ' + e.message);
+  }
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+  dbg('window.GamePix 타입: ' + typeof window.GamePix);
+});
 
 function startGame() {
  document.getElementById('start-screen').style.display = 'none';
@@ -682,5 +699,7 @@ document.getElementById('ranking-btn').addEventListener('click', async function(
 });
 
 </script>
+<div id="debug-box" style="position:fixed; bottom:0; left:0; right:0; background:#000; color:#0f0; font-size:10px; padding:6px; max-height:120px; overflow-y:auto; z-index:99999; font-family:monospace;"></div>
+
 </body>
 </html>
