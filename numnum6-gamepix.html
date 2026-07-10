@@ -60,8 +60,6 @@
 <script src="https://soosooland.com/js/protection.js"></script>
 <!-- ⚠️ 변경 3: GamePix SDK 추가 -->
 <script src="https://sdk.gamepix.com/v3/gamepix.sdk.js"></script>
-<!-- ⚠️ 구글 추천 -->
-<script src="https://gamepix.com"></script>
 <style>
  * { box-sizing: border-box; margin: 0; padding: 0; }
  body {
@@ -657,7 +655,6 @@ document.getElementById('drop-btn').addEventListener('click', dropCard);
 document.getElementById('restart-btn').addEventListener('click', function() {
  if (adPending) return;
  init();
- safeGamePix(() => GamePix.sdk.gameplayStart());
 });
 
 document.getElementById('save-score-btn').addEventListener('click', async function() {
