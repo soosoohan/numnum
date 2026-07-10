@@ -523,9 +523,13 @@ function runMergeLoop(newR, newC, mergeSet) {
          const newVal = val*2;
          score += newVal;
          document.getElementById('score').textContent = score;
+         safeGamePix(() => GamePix.updateScore(score));   // ← 추가
          board[nr][nc] = {value:newVal}; board[r][c] = {value:0};
          mergeSet.add(`${nr}-${nc}`); next.push({r:nr,c:nc});
-         if (newVal>=256) fireConfetti();
+         if (newVal>=256) {
+           fireConfetti();
+           safeGamePix(() => GamePix.happyMoment());   // ← 추가 (해피모먼트도 여긴 빠져있었음)
+         }
          break;
        }
      }
