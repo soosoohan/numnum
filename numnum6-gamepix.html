@@ -322,15 +322,14 @@ document.getElementById('player-id').textContent = playerId;
 
 let board, queue, selectedCol, score, gameOver, isMobile;
 
-// ⚠️ 변경 4: safeGamePix 헬퍼 추가
+// ⚠️ 변경 4: safeGamePix 헬퍼
 function safeGamePix(fn) {
-  try { if (window.GamePix && window.GamePix.sdk) fn(); } catch(e) {}
+  try { if (window.GamePix) fn(); } catch(e) {}
 }
 
 function startGame() {
  document.getElementById('start-screen').style.display = 'none';
  init();
- safeGamePix(() => GamePix.sdk.gameStarted()); // ⚠️ 변경 5
 }
 window.startGame = startGame;
 
@@ -575,7 +574,7 @@ function compactDown(c) {
  for (let r=writeRow;r>=0;r--) board[r][c]={value:0};
 }
 
- let adPending = false;
+let adPending = false;
 
 async function checkGameOver() {
  for (let c = 0; c < COLS; c++) { if (isEmpty(board[0][c])) return; }
@@ -583,18 +582,13 @@ async function checkGameOver() {
  document.getElementById('final-score').textContent = score.toLocaleString();
  document.getElementById('save-score-btn').disabled = false;
  document.getElementById('save-score-btn').textContent = '💾 Save Score';
- 
- safeGamePix(() => { GamePix.sdk.gameplayStop(); GamePix.sdk.sendScore(score); });
 
- // 인터스티셜 광고 시도
  if (window.GamePix && GamePix.interstitialAd) {
    adPending = true;
    try {
-     const res = await GamePix.interstitialAd();
-     adPending = false;
-   } catch(e) {
-     adPending = false;
-   }
+     await GamePix.interstitialAd();
+   } catch(e) {}
+   adPending = false;
  }
 
  document.getElementById('overlay').classList.add('show');
@@ -686,10 +680,6 @@ document.getElementById('ranking-btn').addEventListener('click', async function(
  this.textContent = '🏆 Close Leaderboard';
 });
 
-// ⚠️ 변경 8: 로딩 완료 이벤트
-window.addEventListener('load', function() {
-  safeGamePix(() => GamePix.sdk.gameLoadingFinished());
-});
 </script>
 </body>
 </html>
