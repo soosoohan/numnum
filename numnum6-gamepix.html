@@ -3,16 +3,7 @@
 <head>
 <script>
  console.log("© 2025-2026 Soosooland by Han Soosoo. All rights reserved.");
- console.log("https://soosooland.com");
  console.log("NumNum | Born: 2026-06-13");
-</script>
-<!-- ⚠️ 변경 1: iframe 차단 스크립트 제거 (GamePix는 iframe으로 감싸서 로드하므로) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-4YZHC1G9FN"></script>
-<script>
- window.dataLayer = window.dataLayer || [];
- function gtag(){dataLayer.push(arguments);}
- gtag('js', new Date());
- gtag('config', 'G-4YZHC1G9FN');
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -29,16 +20,8 @@
 <meta property="og:image" content="https://soosooland.com/numnum/numnum2.png">
 <meta property="og:site_name" content="Soosooland">
 <meta property="og:locale" content="en_US">
-<meta property="og:locale:alternate" content="ko_KR">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="NumNum 6x6">
 <meta name="twitter:description" content="A merge puzzle where fruit cards multiply numbers">
-<meta name="twitter:image" content="https://soosooland.com/numnum/numnum2.png">
-<link rel="canonical" href="https://soosooland.com/numnum/numnum6-en.html">
-<link rel="alternate" hreflang="en" href="https://soosooland.com/numnum/numnum6-en.html">
-<link rel="alternate" hreflang="ko" href="https://soosooland.com/numnum/numnum6-ko.html">
-<link rel="alternate" hreflang="x-default" href="https://soosooland.com/numnum/numnum6-ko.html">
-<link rel="stylesheet" href="https://soosooland.com/css/protection.css">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -57,7 +40,6 @@
   }
 }
 </script>
-<script src="https://soosooland.com/js/protection.js"></script>
 <!-- ⚠️ 변경 3: GamePix SDK 추가 -->
 <script src="https://sdk.gamepix.com/v3/gamepix.sdk.js"
   onload="window.__gpxLoaded=true"
@@ -235,37 +217,14 @@
 <div id="pc-hint">← → Select column · Enter / Space Drop</div>
 <button id="ranking-btn" style="margin-top:14px; padding:10px 28px; border-radius:10px; border:none; background:#2a2a4a; color:#f0c040; font-size:0.95rem; cursor:pointer;">🏆 Leaderboard</button>
 
-<div id="ranking-area" style="display:none;">
- <h3>🏆 Top 10 · NumNum 6×6</h3>
- <div id="ranking-list"></div>
-</div>
-
 <div id="overlay">
  <h2>Game over</h2>
  <p>Score: <strong id="final-score"></strong></p>
  <div style="display:flex; gap:12px; flex-wrap:wrap; justify-content:center;">
-   <button id="save-score-btn" style="padding:12px 28px; border-radius:10px; border:none; background:#a8e063; color:#1a1a2e; font-size:1rem; font-weight:bold; cursor:pointer;">💾 Save Score</button>
-   <button id="restart-btn">Try again</button>
+ <button id="restart-btn">Try again</button>
  </div>
 </div>
 
-<script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-app.js";
-import { getFirestore, collection, addDoc, query, where, orderBy, limit, getDocs, getCountFromServer }
- from "https://www.gstatic.com/firebasejs/12.14.0/firebase-firestore.js";
-
-const firebaseConfig = {
-  apiKey: "AIzaSyAK6rU4kDg8fMAAGNX8BGVYq6KB_LjykhM",
-  authDomain: "numnum-2b117.firebaseapp.com",
-  projectId: "numnum-2b117",
-  storageBucket: "numnum-2b117.firebasestorage.app",
-  messagingSenderId: "556060904308",
-  appId: "1:556060904308:web:b9228fde1d056e563d3a21",
-  measurementId: "G-WY97HCQZJS"
-};
-
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
 
 const ROWS = 6, COLS = 6;
 const MODE = 'numnum6x6';
