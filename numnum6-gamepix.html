@@ -59,7 +59,10 @@
 </script>
 <script src="https://soosooland.com/js/protection.js"></script>
 <!-- ⚠️ 변경 3: GamePix SDK 추가 -->
-<script src="https://sdk.gamepix.com/v3/gamepix.sdk.js"></script>
+<script src="https://sdk.gamepix.com/v3/gamepix.sdk.js"
+  onload="window.__gpxLoaded=true"
+  onerror="window.__gpxLoadError=true">
+</script>
 <style>
  * { box-sizing: border-box; margin: 0; padding: 0; }
  body {
@@ -340,6 +343,8 @@ function safeGamePix(fn) {
 
 window.addEventListener('DOMContentLoaded', () => {
   dbg('window.GamePix 타입: ' + typeof window.GamePix);
+  dbg('스크립트 로드됨: ' + window.__gpxLoaded);
+  dbg('스크립트 로드에러: ' + window.__gpxLoadError);
 });
 
 function startGame() {
