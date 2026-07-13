@@ -5,9 +5,12 @@
  if (window.top !== window.self) {
    window.top.location = "https://soosooland.com";
  }
+ if (window.innerWidth < 500) {
+    window.location.href = 'https://soosooland.com/numnum6-en.html';
+  }
  console.log("© 2025-2026 Soosooland by Han Soosoo. All rights reserved.");
  console.log("https://soosooland.com");
- console.log("NumNum | Born: 2026-06-13");
+ console.log("NumVine | Born: 2026-07-13");
 </script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-4YZHC1G9FN"></script>
 <script>
@@ -18,42 +21,39 @@
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-<title>NumNum 6x6 | Soosooland</title>
-<meta name="description" content="NumNum 6x6 — Drop numbers and fruits, multiply and merge!">
-<meta name="keywords" content="NumNum, Fruit Card Number Merge, number multiply puzzle, merge game, brain game, Soosooland">
+<title>NumVine | Soosooland</title>
+<meta name="description" content="NumVine — Drop numbers and fruits, multiply and merge!">
+<meta name="keywords" content="NumVine, Fruit Card Number Merge, number multiply puzzle, merge game, brain game, Soosooland">
 <meta name="author" content="Soosooland">
 
-<meta property="og:title" content="NumNum 6x6 - Merge Numbers with Fruit Cards">
-<meta property="og:description" content="Maximized 6x6 grid built for massive combos and epic long-term strategy. Fruit cards double, quadruple, or 8x the numbers.">
+<meta property="og:title" content="NumVine - Merge Numbers with Fruit Cards">
+<meta property="og:description" content="Maximized 7x7 grid built for massive combos and epic long-term strategy. Fruit cards double, quadruple, or 8x the numbers.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://soosooland.com/numnum/numnum6-en.html"> 
+<meta property="og:url" content="https://soosooland.com/numnum/numvine.html"> 
 <meta property="og:image" content="https://soosooland.com/numnum/numnum2.png">
 <meta property="og:site_name" content="Soosooland">
 <meta property="og:locale" content="en_US">
 <meta property="og:locale:alternate" content="ko_KR">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="NumNum 6x6">
+<meta name="twitter:title" content="NumVine">
 <meta name="twitter:description" content="A merge puzzle where fruit cards multiply numbers">
 <meta name="twitter:image" content="https://soosooland.com/numnum/numnum2.png">
-<link rel="canonical" href="https://soosooland.com/numnum/numnum6-en.html">
-<link rel="alternate" hreflang="en" href="https://soosooland.com/numnum/numnum6-en.html">
-<link rel="alternate" hreflang="ko" href="https://soosooland.com/numnum/numnum6-ko.html">
-<link rel="alternate" hreflang="x-default" href="https://soosooland.com/numnum/numnum6-ko.html">
+<link rel="canonical" href="https://soosooland.com/numnum/numvine.html">
 <link rel="stylesheet" href="https://soosooland.com/css/protection.css">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "VideoGame",
-  "name": "NumNum 6x6",
+  "name": "NumVine",
   "description": "A drop-and-merge puzzle where fruit cards multiply touching numbers by 2x, 4x, or 8x. 6x6 grid.",
-  "url": "https://soosooland.com/numnum/numnum6-en.html",
+  "url": "https://soosooland.com/numnum/numvine.html",
   "genre": ["merge", "math", "puzzle"],
   "gamePlatform": "Web browser",
   "playMode": ["SinglePlayer"],
   "inLanguage": ["en"],
   "isPartOf": {
     "@type": "VideoGameSeries",
-    "name": "NumNum",
+    "name": "NumVine",
     "url": "https://soosooland.com/numnum/"
   }
 }
@@ -211,7 +211,7 @@
 </div>
 
 <button class="back-button" onclick="location.href='index.html'">←</button>
-<h1>🍎 NumVine7</h1>
+<h1>🍎 NumVine</h1>
 <div id="player-id"></div>
 <div id="score-area">Score: <span id="score">0</span></div>
 
@@ -243,7 +243,7 @@
 <button id="ranking-btn" style="margin-top:14px; padding:10px 28px; border-radius:10px; border:none; background:#2a2a4a; color:#f0c040; font-size:0.95rem; cursor:pointer;">🏆 Leaderboard</button>
 
 <div id="ranking-area" style="display:none;">
- <h3>🏆 Top 10 · NumNum 6×6</h3>
+ <h3>🏆 Top 10 · NumVine</h3>
  <div id="ranking-list"></div>
 </div>
 
@@ -275,7 +275,7 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 const ROWS = 7, COLS = 7;
-const MODE = 'numvine7';
+const MODE = 'numvine';
 const QUEUE_SIZE = 4;
 const CONSONANTS = 'BCDFGHJKLMNPQRSTVWXZ';
 const DIGITS = '23456789';
