@@ -13,39 +13,30 @@
       <stop offset="0%" stop-color="#1a1a2e"/>
       <stop offset="100%" stop-color="#1a1a2e"/>
     </linearGradient>
+    <clipPath id="roundedCat">
+      <rect x="40" y="60" width="180" height="180" rx="25" ry="25"/>
+    </clipPath>
+    <linearGradient id="fruitText" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%"   stop-color="#B8E986"/>  <!-- 2 -->
+      <stop offset="25%"  stop-color="#7ED957"/>  <!-- 4 -->
+      <stop offset="50%"  stop-color="#4DD0E1"/>  <!-- 8 -->
+      <stop offset="75%"  stop-color="#42A5F5"/>  <!-- 16 -->
+      <stop offset="100%" stop-color="#7E57C2"/>  <!-- 32 -->
+    </linearGradient>
   </defs>
+
   <rect width="930" height="300" fill="url(#bg)"/>
 
-  <!-- 왼쪽: 내 고양이 이미지 -->
-<defs>
-  <clipPath id="roundedCat">
-    <rect x="40" y="60" width="180" height="180" rx="25" ry="25"/>
-  </clipPath>
-</defs>
+  <!-- 왼쪽: 고양이 -->
+  <image href="https://soosooland.com/numnum/numnum1.png" x="40" y="60" width="180" height="180" 
+         preserveAspectRatio="xMidYMid meet" clip-path="url(#roundedCat)"/>
 
-<image href="https://soosooland.com/numnum/numnum1.png" x="40" y="60" width="180" height="180" 
-       preserveAspectRatio="xMidYMid meet" clip-path="url(#roundedCat)"/>
-  
-  <!-- 가운데 타이틀 -->
-  <g transform="translate(465,150)" text-anchor="middle">
-<defs>
-  <linearGradient id="fruitText" x1="0%" y1="0%" x2="100%" y2="0%">
-    <stop offset="0%"   stop-color="#B8E986"/>  <!-- 2 -->
-    <stop offset="25%"  stop-color="#7ED957"/>  <!-- 4 -->
-    <stop offset="50%"  stop-color="#4DD0E1"/>  <!-- 8 -->
-    <stop offset="75%"  stop-color="#42A5F5"/>  <!-- 16 -->
-    <stop offset="100%" stop-color="#7E57C2"/>  <!-- 32 -->
-  </linearGradient>
-</defs>
-<text y="-20" font-family="'Arial Rounded MT Bold', sans-serif" font-size="66" font-weight="600" fill="url(#fruitText)">NumNum</text>
+  <!-- 가운데: 타이틀 -->
+  <g transform="translate(560,150)" text-anchor="middle">
+    <text y="-20" font-family="'Arial Rounded MT Bold', sans-serif" font-size="66" font-weight="600" fill="url(#fruitText)">NumNum</text>
     <text y="20" font-family="sans-serif" font-size="20" fill="url(#fruitText)">A tasty number puzzle</text>
   </g>
-
-  <!-- 오른쪽: 게임 화면 -->
-  <image href="https://soosooland.com/numnum/IMG_1550.jpeg" x="660" y="50" width="180" height="180" preserveAspectRatio="xMidYMid meet"/>
 
 </svg>
 </body>
 </html>
-
-
