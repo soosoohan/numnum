@@ -10,12 +10,9 @@
 <svg width="930" height="300" viewBox="0 0 930 300" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#1a1a2e"/>
-      <stop offset="100%" stop-color="#1a1a2e"/>
-    </linearGradient>
-    <clipPath id="roundedCat">
-      <rect x="40" y="60" width="180" height="180" rx="25" ry="25"/>
-    </clipPath>
+  <stop offset="0%" stop-color="#FFFFFF"/>
+  <stop offset="100%" stop-color="#FFFFFF"/>
+</linearGradient>
     <linearGradient id="fruitText" x1="0%" y1="0%" x2="100%" y2="0%">
       <stop offset="0%"   stop-color="#B8E986"/>  <!-- 2 -->
       <stop offset="25%"  stop-color="#7ED957"/>  <!-- 4 -->
@@ -28,13 +25,13 @@
   <rect width="930" height="300" fill="url(#bg)"/>
 
   <!-- 왼쪽: 고양이 -->
-  <image href="https://soosooland.com/numnum/numnum1.png" x="40" y="60" width="180" height="180" 
-         preserveAspectRatio="xMidYMid meet" clip-path="url(#roundedCat)"/>
+  <image href="https://soosooland.com/numnum/numnum1.png" x="70" y="30" width="240" height="240" 
+         preserveAspectRatio="xMidYMid meet"/>
 
   <!-- 가운데: 타이틀 -->
-  <g transform="translate(560,160)" text-anchor="middle">
-    <text y="-20" font-family="'Arial Rounded MT Bold', sans-serif" font-size="75" font-weight="600" fill="url(#fruitText)">NumNum</text>
-    <text y="20" font-family="sans-serif" font-size="20" fill="url(#fruitText)">A tasty number puzzle</text>
+  <g transform="translate(580,160)" text-anchor="middle">
+    <text y="-20" font-family="'Arial Rounded MT Bold', sans-serif" font-size="80" font-weight="600" fill="url(#fruitText)">NumNum</text>
+    <text y="20" font-family="sans-serif" font-size="30" fill="url(#fruitText)">A tasty number puzzle</text>
   </g>
 
 </svg>
