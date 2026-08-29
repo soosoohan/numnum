@@ -447,24 +447,14 @@ function fontSize(v) {
 }
 
 function updateQueueUI() {
- for (let i = 0; i < QUEUE_SIZE; i++) {
-   const el = document.getElementById(`q${i}`); if (!el) continue;
-   const card = queue[i];
-   el.className = 'queue-card' + (i===0 ? ' active' : '');
-   if (!card) { el.textContent = ''; el.style.background = '#333'; return; }
-   if (isFruit(card)) {
-     el.classList.add('fruit');
-     el.textContent = card.fruit.emoji;
-     el.style.background = i===0 ? (FRUIT_BG[card.fruit.emoji] || '#555') : '#333';
-     el.style.color = '#fff';
-     el.style.fontSize = '1.8rem';
-   } else {
-     el.textContent = card.value;
-     el.style.background = i===0 ? '#555' : '#333';
-     el.style.color = i===0 ? '#eee' : '#777';
-     el.style.fontSize = '1.2rem';
-   }
- }
+  for (let i = 0; i < QUEUE_SIZE; i++) {
+    const el = document.getElementById(`q${i}`); if (!el) continue;
+    const card = queue[i];
+    const type = isFruit(card) ? 'fruit' : 'number-card';
+    el.className = 'queue-card' + (i===0 ? ' active' : '') + ' ' + type;
+    if (!card) { el.textContent = ''; continue; }
+    el.textContent = isFruit(card) ? card.fruit.emoji : card.value;
+  }
 }
 
 function dropCard() {
