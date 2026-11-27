@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>넘스톤 배너 - 게임 화면</title>
+<link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+<style>
+  body {
+    background: white;
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Jua', sans-serif;
+  }
+
+  .grid {
+    display: grid;
+    gap: 10px;            /* 선 굵기 */
+    padding: 10px;
+    border-radius: 26px;
+  }
+
+  .cell {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 18px;
+    font-size: 48px;
+  }
+  .cell.long { font-size: 34px; }
+  .cell.emoji { font-size: 52px; }
+</style>
+</head>
+<body>
+
+<div id="grid" class="grid"></div>
+
+<script>
+/* ===== 여기만 고치세요 ===== */
+const CONFIG = {
+  pageBg:  "#70b5b5",   /* 배너 바탕 (중간 명도) */
+  line:    "#70b5b5",   /* 격자선 (인덱스 body 배경색) */
+  text:    "#ffffff",   /* 글씨 (인덱스 info-card 글씨색) */
+  emojiBg: "#fce9dc",   /* 이모지 칸 (인덱스 info-card 배경색) */
+
+  cols: 4,
+  cells: [                      /* 넘카오스 */
+    "16",  "2",   "🍎", "8",
+    "🍒",  "32",  "128", "4",
+    "1024","🍒",  "256", "🍎",
+    "2048","512", "🍇",  "8"
+  ]
+};
+
+/* 숫자별 칸 색 (원래 게임 색을 파스텔로) */
+const TILE = {
+  "2":    "#B8E986",
+  "4":    "#7ED957",
+  "8":    "#4DD0E1",
+  "16":   "#42A5F5",
+  "32":   "#7E57C2",
+  "64":   "#EC407A",
+  "128":  "#FFA726",
+  "256":  "#FF7043",
+  "512":  "#E53935",
+  "1024": "#33909c",
+  "2048": "#6f52a1"
+};
+
+
+
+/* ========================== */
+
+document.body.style.background = CONFIG.pageBg;
+
+const grid = document.getElementById("grid");
+grid.style.background = CONFIG.line;
+grid.style.gridTemplateColumns = `repeat(${CONFIG.cols}, 100px)`;
+
+CONFIG.cells.forEach(v => {
+  const d = document.createElement("div");
+  const isNum = /^[0-9]+$/.test(v);
+  d.className = "cell" + (isNum ? (v.length >= 4 ? " long" : "") : " emoji");
+  d.textContent = v;
+  d.style.background = isNum ? (TILE[v] || "#eee") : CONFIG.emojiBg;
+  d.style.color = CONFIG.text;
+  grid.appendChild(d);
+});
+</script>
+</body>
+</html>
