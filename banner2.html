@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #70b5b5;       /* 밤하늘 */
+    --ko: #e8ffff;       /* 연한 노란색 */
+    --en: #145454;       /* 연한 주황색 */
+  }
+  body { margin: 0; }
+  .banner {
+    container-type: inline-size;
+    width: 100%;
+    max-width: 2000px;
+    aspect-ratio: 4 / 1;
+    margin: 0 auto;
+    background: var(--bg);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 4cqw;
+    box-sizing: border-box;
+    font-family: 'Jua', sans-serif;
+  }
+  .banner img {
+    height: 95%;
+    width: 22cqw;
+    object-fit: contain;
+    border-radius: 2cqw;
+  }
+  .title { text-align: center; line-height: 1.1; }
+  .ko { font-size: 12cqw; color: var(--ko); }
+  .en { font-size: 5cqw; letter-spacing: 0.6cqw; color: var(--en); }
+</style>
+</head>
+<body>
+  <div class="banner">
+    <img src="https://soosooland.com/numnum/numnumgrid.jpeg" alt="">
+    <div class="title">
+    <div class="ko">NumNum</div>
+      <div class="en">2048+Tetris</div>
+      </div>
+    <img src="https://soosooland.com/numnum/numnum1.png" alt="">
+    </div>
+</body>
+</html>
